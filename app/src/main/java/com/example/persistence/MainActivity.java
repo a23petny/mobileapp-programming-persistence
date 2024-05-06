@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
         database = databaseHelper.getWritableDatabase();
 
 
-        editText1 = findViewById(R.id.editTextText1);
-        editText2 = findViewById(R.id.editTextText2);
-        editText3 = findViewById(R.id.editTextText3);
+        editText1 = findViewById(R.id.id);
+        editText2 = findViewById(R.id.name);
+        editText3 = findViewById(R.id.height);
 
         read = findViewById(R.id.Read);
 
@@ -66,15 +66,16 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
 
     }
     public void write(View view){
-        Gson gson = new Gson();
+        /*Gson gson = new Gson();
         List<String> jsonlist = new ArrayList<>();
         jsonlist.add(""+editText1.getText());
         jsonlist.add(""+editText2.getText());
         jsonlist.add(""+editText3.getText());
 
-
         String json = gson.toJson(jsonlist);
-        Log.d("asdasdasdasd",""+json);
+        Log.d("asdasdasdasd",""+json);*/
+        // "CREATE TABLE mountain (id INTEGER PRIMARY KEY, name TEXT, height INT)"
+
     }
 
 }
