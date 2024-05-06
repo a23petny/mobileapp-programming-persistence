@@ -3,6 +3,7 @@ package com.example.persistence;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void write(View view) {
-
+        //String[] json = gson.toJson(new String[]{editText1.getText(),editText2.getText(),editText3.getText()};
+        //Log.d("asdasdasdasd","\neditText1: "+editText1.getText()+"\neditText2: "+editText2.getText()+"\neditText3: "+editText3.getText() );
+        //String json =
     }
 
 }
