@@ -2,6 +2,8 @@ package com.example.persistence;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity { // implements JsonTask.JsonTaskListener
-    private final String JSON_FILE = "mountains.json";
 
+    private SQLiteDatabase database;
+    private DatabaseHelper databaseHelper;
     private EditText editText1;
     private EditText editText2;
     private EditText editText3;
@@ -26,10 +29,17 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
     private Button write;
 
     private TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Create
+        databaseHelper = new DatabaseHelper(this);
+        database = databaseHelper.getWritableDatabase();
+
+
         editText1 = findViewById(R.id.editTextText1);
         editText2 = findViewById(R.id.editTextText2);
         editText3 = findViewById(R.id.editTextText3);
@@ -43,6 +53,12 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
 
 
 
+    }
+    private long addMountain(String name, int height) {
+        ContentValues values = new ContentValues();
+        values.put(DatabaseTables.Mountain.COLUMN_NAME_NAME, name);
+        values.put(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT, height);
+        return database.insert(DatabaseTables.Mountain.TABLE_NAME, null, values);
     }
 
 
