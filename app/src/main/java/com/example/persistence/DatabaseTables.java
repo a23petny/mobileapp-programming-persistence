@@ -59,12 +59,11 @@ class DatabaseTables {
         String[] selectionArgs = { String.valueOf(id) };
         return database.delete(DatabaseTables.Mountain.TABLE_NAME, selection, selectionArgs);
     }
-    public long addMountain(String name, int height) {
-        Log.d("asdasdasdasd","It calls");
+    public long addMountain(String flavour_of_ball_1, String flavour_of_ball_2, String flavour_of_ball_3, int size) {
+
         ContentValues values = new ContentValues();
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_NAME, name);
+        values.put(DatabaseTables.Mountain.COLUMN_NAME_NAME, flavour_of_ball_1);
         values.put(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT, height);
-        Log.d("asdasdasdasd",""+values);
         return database.insert(DatabaseTables.Mountain.TABLE_NAME, null, values);
     }
 

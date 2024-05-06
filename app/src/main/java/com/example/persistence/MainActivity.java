@@ -91,6 +91,5 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
         // "CREATE TABLE mountain (id INTEGER PRIMARY KEY, name TEXT, height INT)"
 
     }
-
 }
 
