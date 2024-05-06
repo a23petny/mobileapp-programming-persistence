@@ -64,12 +64,20 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
 
     public void read(View view) {
         List<DatabaseTables.Mountain> mountains = databaseTables.getMountains();
-        Log.d("asdasdasdasd",""+mountains.get(0).string);
 
+
+        for (DatabaseTables.Mountain mountain : mountains){
+            databaseTables.deleteMountain(mountain.id);
+        }
     }
     public void write(View view){
 
 
+
+        List<DatabaseTables.Mountain> mountains = databaseTables.getMountains();
+        for (DatabaseTables.Mountain mountain : mountains){
+            databaseTables.deleteMountain(mountain.id);
+        }
 
         Editable id = editText1.getText();
         String name = editText2.getText().toString();

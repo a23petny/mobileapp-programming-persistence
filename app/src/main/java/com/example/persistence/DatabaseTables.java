@@ -18,9 +18,13 @@ class DatabaseTables {
         static final String COLUMN_NAME_ID = "id";
         static final String COLUMN_NAME_NAME = "name";
         static final String COLUMN_NAME_HEIGHT = "height";
+        public final String name;
+        public final long id;
 
-        public Mountain(long aLong, String string, int anInt) {
 
+        public Mountain(long id, String name, int height) {
+            this.id = id;
+            this.name = name;
         }
     }
 
