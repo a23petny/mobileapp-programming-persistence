@@ -3,6 +3,7 @@ package com.example.persistence;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,5 +33,13 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView1);
 
     }
+
+    public void read(View view) {
+
+    }
+    public void write(View view) {
+
+    }
+
 }
 
