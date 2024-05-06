@@ -41,22 +41,9 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
 
 
 
-        //new JsonFile(this, this).execute(JSON_FILE);
+
 
     }
-
-/*
-    @Override
-    public void onPostExecute(String json) {
-        Log.d("MainActivity", "" + json);
-        Gson gson = new Gson();
-        // Unmarshall JSON -> list of objects
-        Type type = new TypeToken<List<Mountain>>() {
-        }.getType();
-
-        mountains = gson.fromJson(json, type);
-    }*/
-
 
 
     public void read(View view) {
@@ -64,16 +51,14 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
     }
     public void write(View view){
         Gson gson = new Gson();
-        List<String> json = new ArrayList<>();
-        json.add(""+editText1.getText());
-        json.add(""+editText2.getText());
-        json.add(""+editText3.getText());
+        List<String> jsonlist = new ArrayList<>();
+        jsonlist.add(""+editText1.getText());
+        jsonlist.add(""+editText2.getText());
+        jsonlist.add(""+editText3.getText());
 
+
+        String json = gson.toJson(jsonlist);
         Log.d("asdasdasdasd",""+json);
-        //String[] json = gson.toJson("asd");
-        //Log.d("asdasdasdasd","\neditText1: "+editText1.getText()+"\neditText2: "+editText2.getText()+"\neditText3: "+editText3.getText() );
-        //String json =
-        //implementation com.google.andr
     }
 
 }
