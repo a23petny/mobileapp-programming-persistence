@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
     private EditText editText1;
     private EditText editText2;
     private EditText editText3;
+    private EditText editText4;
 
 
     private Button read;
@@ -45,9 +46,10 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
 
         //databaseTables.databaseHelper.onCreate(databaseTables.database);
 
-        editText1 = findViewById(R.id.id);
-        editText2 = findViewById(R.id.name);
-        editText3 = findViewById(R.id.height);
+        editText1 = findViewById(R.id.flavour_of_ball_1);
+        editText2 = findViewById(R.id.flavour_of_ball_2);
+        editText3 = findViewById(R.id.flavour_of_ball_3);
+        editText4 = findViewById(R.id.size);
 
         read = findViewById(R.id.Read);
 
@@ -72,19 +74,17 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
     }
     public void write(View view){
 
-
-
         List<DatabaseTables.Mountain> mountains = databaseTables.getMountains();
         for (DatabaseTables.Mountain mountain : mountains){
             databaseTables.deleteMountain(mountain.id);
         }
 
-        Editable id = editText1.getText();
-        String name = editText2.getText().toString();
-        Editable height = editText3.getText();
+        String flavour_of_ball_1 = editText1.getText().toString();
+        String flavour_of_ball_2 = editText2.getText().toString();
+        String flavour_of_ball_3 = editText3.getText().toString();
+        int size = Integer.valueOf(editText4.getText().toString());
 
-        Log.d("asdasdasdasd",editText2.getText().toString());
-        databaseTables.addMountain(name, 1);
+        databaseTables.addMountain(flavour_of_ball_1, 1);
 
         //String json = gson.toJson(jsonlist);
         //Log.d("asdasdasdasd",""+json);*/
