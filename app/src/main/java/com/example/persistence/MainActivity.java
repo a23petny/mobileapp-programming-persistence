@@ -2,9 +2,9 @@ package com.example.persistence;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +18,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity { // implements JsonTask.JsonTaskListener
 
-    private SQLiteDatabase database;
-    private DatabaseHelper databaseHelper;
+
+    private DatabaseTables databaseTables;
+
     private EditText editText1;
     private EditText editText2;
     private EditText editText3;
@@ -34,11 +35,15 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        databaseTables = new DatabaseTables();
 
         // Create
-        databaseHelper = new DatabaseHelper(this);
-        database = databaseHelper.getWritableDatabase();
+        databaseTables.databaseHelper = new DatabaseHelper(this);
+        // databaseTables
 
+        databaseTables.database = databaseTables.databaseHelper.getWritableDatabase();
+
+        //databaseTables.databaseHelper.onCreate(databaseTables.database);
 
         editText1 = findViewById(R.id.id);
         editText2 = findViewById(R.id.name);
@@ -54,26 +59,27 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
 
 
     }
-    private long addMountain(String name, int height) {
-        ContentValues values = new ContentValues();
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_NAME, name);
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT, height);
-        return database.insert(DatabaseTables.Mountain.TABLE_NAME, null, values);
-    }
+
 
 
     public void read(View view) {
+        List<DatabaseTables.Mountain> mountains = databaseTables.getMountains();
+        Log.d("asdasdasdasd",""+mountains.get(0).string);
 
     }
     public void write(View view){
-        /*Gson gson = new Gson();
-        List<String> jsonlist = new ArrayList<>();
-        jsonlist.add(""+editText1.getText());
-        jsonlist.add(""+editText2.getText());
-        jsonlist.add(""+editText3.getText());
 
-        String json = gson.toJson(jsonlist);
-        Log.d("asdasdasdasd",""+json);*/
+
+
+        Editable id = editText1.getText();
+        String name = editText2.getText().toString();
+        Editable height = editText3.getText();
+
+        Log.d("asdasdasdasd",editText2.getText().toString());
+        databaseTables.addMountain(name, 1);
+
+        //String json = gson.toJson(jsonlist);
+        //Log.d("asdasdasdasd",""+json);*/
         // "CREATE TABLE mountain (id INTEGER PRIMARY KEY, name TEXT, height INT)"
 
     }

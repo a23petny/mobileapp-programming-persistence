@@ -3,13 +3,14 @@ package com.example.persistence;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 class DatabaseTables {
-    private SQLiteDatabase database;
-    private DatabaseHelper databaseHelper;
+    public SQLiteDatabase database;
+    public DatabaseHelper databaseHelper;
 
     static class Mountain {
 
@@ -19,6 +20,7 @@ class DatabaseTables {
         static final String COLUMN_NAME_HEIGHT = "height";
 
         public Mountain(long aLong, String string, int anInt) {
+
         }
     }
 
@@ -33,7 +35,7 @@ class DatabaseTables {
             // "DROP TABLE IF EXISTS mountain"
             "DROP TABLE IF EXISTS " + Mountain.TABLE_NAME;
 
-    private List<Mountain> getMountains() {
+    public List<Mountain> getMountains() {
         Cursor cursor = database.query(DatabaseTables.Mountain.TABLE_NAME, null, null, null, null, null, null);
         List<Mountain> mountains = new ArrayList<>();
         while (cursor.moveToNext()) {
@@ -48,15 +50,17 @@ class DatabaseTables {
         return mountains;
     }
 
-    private int deleteMountain(long id) {
+    public int deleteMountain(long id) {
         String selection = DatabaseTables.Mountain.COLUMN_NAME_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
         return database.delete(DatabaseTables.Mountain.TABLE_NAME, selection, selectionArgs);
     }
-    private long addMountain(String name, int height) {
+    public long addMountain(String name, int height) {
+        Log.d("asdasdasdasd","It calls");
         ContentValues values = new ContentValues();
         values.put(DatabaseTables.Mountain.COLUMN_NAME_NAME, name);
         values.put(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT, height);
+        Log.d("asdasdasdasd",""+values);
         return database.insert(DatabaseTables.Mountain.TABLE_NAME, null, values);
     }
 
