@@ -8,7 +8,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1; // If this is incremented onUpgrade() will be executed
-    private static final String DATABASE_NAME = "Icecream.db"; // The file name of our database
+    private static final String DATABASE_NAME = "Icecreamsasdasdasdasd.db"; // The file name of our database
 
     DatabaseHelper(Context context) {
 
