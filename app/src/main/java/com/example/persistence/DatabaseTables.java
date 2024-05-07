@@ -50,7 +50,7 @@ class DatabaseTables {
             // "DROP TABLE IF EXISTS mountain"
             "DROP TABLE IF EXISTS " + Icecream.TABLE_NAME;
 
-    public List<Icecream> getMountains() {
+    public List<Icecream> getIcecreams() {
         Cursor cursor = database.query(DatabaseTables.Icecream.TABLE_NAME, null, null, null, null, null, null);
         List<Icecream> mountains = new ArrayList<>();
         while (cursor.moveToNext()) {
@@ -67,19 +67,19 @@ class DatabaseTables {
         return mountains;
     }
 
-    public int deleteMountain(long id) {
+    public int deletIceream(long id) {
         String selection = DatabaseTables.Icecream.COLUMN_NAME_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
         return database.delete(DatabaseTables.Icecream.TABLE_NAME, selection, selectionArgs);
     }
-    public long addMountain(String fob1,String fob2,String fob3, int size) {
-        Log.d("asdasdasdasd","It calls");
+    public long addIcecream(String fob1,String fob2,String fob3, int size) {
+
         ContentValues values = new ContentValues();
         values.put(DatabaseTables.Icecream.COLUMN_NAME_FOBONE, fob1);
         values.put(DatabaseTables.Icecream.COLUMN_NAME_FOBTWO, fob2);
         values.put(DatabaseTables.Icecream.COLUMN_NAME_FOBTHREE, fob3);
         values.put(DatabaseTables.Icecream.COLUMN_NAME_SIZE, size);
-        Log.d("Your Order","asdasdasdgadfhdfhafdsb");
+
 
         return database.insert(DatabaseTables.Icecream.TABLE_NAME, null, values);
     }

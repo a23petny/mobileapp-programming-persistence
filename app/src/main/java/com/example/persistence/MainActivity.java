@@ -53,26 +53,26 @@ public class MainActivity extends AppCompatActivity {
         write = findViewById(R.id.Write);
         textView = findViewById(R.id.textView1);
 
+        read(this.getCurrentFocus());
+
     }
 
 
 
     public void read(View view) {
 
-        List<DatabaseTables.Icecream> icecreams = databaseTables.getMountains();
-        Log.d("Your Order",""+icecreams);
+        List<DatabaseTables.Icecream> icecreams = databaseTables.getIcecreams();
         DatabaseTables.Icecream icecream = icecreams.get(0);
-        String order = "Your Order:\nflavour of ball 1:" + icecream.fob1 + "\nflavour of ball 2:" + icecream.fob2+ "\nflavour of ball 3:" + icecream.fob3+ "\nsize of cone:" + icecream.size+ "cm";
-        Log.d("Your Order",order);
-        Log.d("Your Order","asdasdasdgadfhdfhafdsb");
+
+        String order = "Your Order:\nflavour of ball 1: " + icecream.fob1 + "\nflavour of ball 2: " + icecream.fob2+ "\nflavour of ball 3: " + icecream.fob3+ "\nsize of cone: " + icecream.size+ " cm";
+
         textView.setText(order);
     }
     public void write(View view){
 
-        List<DatabaseTables.Icecream> mountains = databaseTables.getMountains();
-        Log.d("Your Order",""+mountains.size());
-        for (DatabaseTables.Icecream mountain : mountains){
-            databaseTables.deleteMountain(mountain.id);
+        List<DatabaseTables.Icecream> icecreams = databaseTables.getIcecreams();
+        for (DatabaseTables.Icecream icecream : icecreams){
+            databaseTables.deletIceream(icecream.id);
         }
 
         String flavour_of_ball_1 = editText1.getText().toString();
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         String flavour_of_ball_3 = editText3.getText().toString();
         int size = Integer.valueOf(editText4.getText().toString());
 
-        databaseTables.addMountain(flavour_of_ball_1,flavour_of_ball_2,flavour_of_ball_3, size);
+        databaseTables.addIcecream(flavour_of_ball_1,flavour_of_ball_2,flavour_of_ball_3, size);
 
     }
 }
