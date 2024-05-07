@@ -2,7 +2,7 @@
 # Rapport
 
 1. **UI Design:**
-   In the initial setup, I configured the user interface to meet the project's specifications. I integrated a `TextView`, two `Button` views labeled 'Read' and 'Write', and four `EditText` views in the layout file. These were carefully placed to ensure both functionality and aesthetic appeal. The additional `EditText` captures the size of the ice cream cone, supplementing the original three intended for ice cream flavors.
+   - In the initial setup, I configured the user interface to meet the project's specifications. I integrated a `TextView`, two `Button` views labeled 'Read' and 'Write', and four `EditText` views in the layout file. These were carefully placed to ensure both functionality and aesthetic appeal. The additional `EditText` captures the size of the ice cream cone, supplementing the original three intended for ice cream flavors.
 
    ```xml
    <!-- Example of EditText for ice cream size in the layout XML -->
