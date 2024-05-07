@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         write = findViewById(R.id.Write);
         textView = findViewById(R.id.textView1);
 
-        read(this.getCurrentFocus());
+        // for start with percistance you can remove the bracekets of this
+        //read(this.getCurrentFocus());
 
     }
 
