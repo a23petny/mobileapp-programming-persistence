@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity { // implements JsonTask.JsonTaskListener
+public class MainActivity extends AppCompatActivity {
 
 
     private DatabaseTables databaseTables;
@@ -38,13 +38,10 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
         setContentView(R.layout.activity_main);
         databaseTables = new DatabaseTables();
 
-        // Create
         databaseTables.databaseHelper = new DatabaseHelper(this);
-        // databaseTables
-
         databaseTables.database = databaseTables.databaseHelper.getWritableDatabase();
 
-        //databaseTables.databaseHelper.onCreate(databaseTables.database);
+
 
         editText1 = findViewById(R.id.flavour_of_ball_1);
         editText2 = findViewById(R.id.flavour_of_ball_2);
@@ -56,26 +53,25 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
         write = findViewById(R.id.Write);
         textView = findViewById(R.id.textView1);
 
-
-
-
-
     }
 
 
 
     public void read(View view) {
-        List<DatabaseTables.Mountain> mountains = databaseTables.getMountains();
 
-
-        for (DatabaseTables.Mountain mountain : mountains){
-            databaseTables.deleteMountain(mountain.id);
-        }
+        List<DatabaseTables.Icecream> icecreams = databaseTables.getMountains();
+        Log.d("Your Order",""+icecreams);
+        DatabaseTables.Icecream icecream = icecreams.get(0);
+        String order = "Your Order:\nflavour of ball 1:" + icecream.fob1 + "\nflavour of ball 2:" + icecream.fob2+ "\nflavour of ball 3:" + icecream.fob3+ "\nsize of cone:" + icecream.size+ "cm";
+        Log.d("Your Order",order);
+        Log.d("Your Order","asdasdasdgadfhdfhafdsb");
+        textView.setText(order);
     }
     public void write(View view){
 
-        List<DatabaseTables.Mountain> mountains = databaseTables.getMountains();
-        for (DatabaseTables.Mountain mountain : mountains){
+        List<DatabaseTables.Icecream> mountains = databaseTables.getMountains();
+        Log.d("Your Order",""+mountains.size());
+        for (DatabaseTables.Icecream mountain : mountains){
             databaseTables.deleteMountain(mountain.id);
         }
 
@@ -84,11 +80,7 @@ public class MainActivity extends AppCompatActivity { // implements JsonTask.Jso
         String flavour_of_ball_3 = editText3.getText().toString();
         int size = Integer.valueOf(editText4.getText().toString());
 
-        databaseTables.addMountain(flavour_of_ball_1, 1);
-
-        //String json = gson.toJson(jsonlist);
-        //Log.d("asdasdasdasd",""+json);*/
-        // "CREATE TABLE mountain (id INTEGER PRIMARY KEY, name TEXT, height INT)"
+        databaseTables.addMountain(flavour_of_ball_1,flavour_of_ball_2,flavour_of_ball_3, size);
 
     }
 

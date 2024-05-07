@@ -12,41 +12,54 @@ class DatabaseTables {
     public SQLiteDatabase database;
     public DatabaseHelper databaseHelper;
 
-    static class Mountain {
+    static class Icecream {
 
-        static final String TABLE_NAME = "mountain";
+        static final String TABLE_NAME = "icecream";
         static final String COLUMN_NAME_ID = "id";
-        static final String COLUMN_NAME_NAME = "name";
-        static final String COLUMN_NAME_HEIGHT = "height";
-        public final String name;
+        static final String COLUMN_NAME_FOBONE = "fobone";
+        static final String COLUMN_NAME_FOBTWO = "fobtwo";
+        static final String COLUMN_NAME_FOBTHREE = "fobthree";
+
+        static final String COLUMN_NAME_SIZE = "size";
         public final long id;
+        public final String fob1;
+        public final String fob2;
+        public final String fob3;
+        public final int size;
 
 
-        public Mountain(long id, String name, int height) {
+        public Icecream(long id, String fob1, String fob2, String fob3, int size) {
             this.id = id;
-            this.name = name;
+            this.fob1 = fob1;
+            this.fob2 = fob2;
+            this.fob3 = fob3;
+            this.size = size;
         }
     }
 
     static final String SQL_CREATE_TABLE_MOUNTAIN =
             // "CREATE TABLE mountain (id INTEGER PRIMARY KEY, name TEXT, height INT)"
-            "CREATE TABLE " + Mountain.TABLE_NAME + " (" +
-                    Mountain.COLUMN_NAME_ID + " INTEGER PRIMARY KEY," +
-                    Mountain.COLUMN_NAME_NAME + " TEXT," +
-                    Mountain.COLUMN_NAME_HEIGHT + " INT)";
+            "CREATE TABLE " + Icecream.TABLE_NAME + " (" +
+                    Icecream.COLUMN_NAME_ID + " INTEGER PRIMARY KEY," +
+                    Icecream.COLUMN_NAME_FOBONE + " TEXT," +
+                    Icecream.COLUMN_NAME_FOBTWO + " TEXT," +
+                    Icecream.COLUMN_NAME_FOBTHREE + " TEXT," +
+                    Icecream.COLUMN_NAME_SIZE + " INT)";
 
     static final String SQL_DELETE_TABLE_MOUNTAIN =
             // "DROP TABLE IF EXISTS mountain"
-            "DROP TABLE IF EXISTS " + Mountain.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + Icecream.TABLE_NAME;
 
-    public List<Mountain> getMountains() {
-        Cursor cursor = database.query(DatabaseTables.Mountain.TABLE_NAME, null, null, null, null, null, null);
-        List<Mountain> mountains = new ArrayList<>();
+    public List<Icecream> getMountains() {
+        Cursor cursor = database.query(DatabaseTables.Icecream.TABLE_NAME, null, null, null, null, null, null);
+        List<Icecream> mountains = new ArrayList<>();
         while (cursor.moveToNext()) {
-            Mountain mountain = new Mountain(
-                    cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseTables.Mountain.COLUMN_NAME_ID)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.Mountain.COLUMN_NAME_NAME)),
-                    cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT))
+            Icecream mountain = new Icecream(
+                    cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseTables.Icecream.COLUMN_NAME_ID)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.Icecream.COLUMN_NAME_FOBONE)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.Icecream.COLUMN_NAME_FOBTWO)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.Icecream.COLUMN_NAME_FOBTHREE)),
+                    cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseTables.Icecream.COLUMN_NAME_SIZE))
             );
             mountains.add(mountain);
         }
@@ -55,17 +68,20 @@ class DatabaseTables {
     }
 
     public int deleteMountain(long id) {
-        String selection = DatabaseTables.Mountain.COLUMN_NAME_ID + " = ?";
+        String selection = DatabaseTables.Icecream.COLUMN_NAME_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
-        return database.delete(DatabaseTables.Mountain.TABLE_NAME, selection, selectionArgs);
+        return database.delete(DatabaseTables.Icecream.TABLE_NAME, selection, selectionArgs);
     }
-    public long addMountain(String name, int height) {
+    public long addMountain(String fob1,String fob2,String fob3, int size) {
         Log.d("asdasdasdasd","It calls");
         ContentValues values = new ContentValues();
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_NAME, name);
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT, height);
-        Log.d("asdasdasdasd",""+values);
-        return database.insert(DatabaseTables.Mountain.TABLE_NAME, null, values);
+        values.put(DatabaseTables.Icecream.COLUMN_NAME_FOBONE, fob1);
+        values.put(DatabaseTables.Icecream.COLUMN_NAME_FOBTWO, fob2);
+        values.put(DatabaseTables.Icecream.COLUMN_NAME_FOBTHREE, fob3);
+        values.put(DatabaseTables.Icecream.COLUMN_NAME_SIZE, size);
+        Log.d("Your Order","asdasdasdgadfhdfhafdsb");
+
+        return database.insert(DatabaseTables.Icecream.TABLE_NAME, null, values);
     }
 
 
