@@ -41,6 +41,15 @@
 3. **Database Adaptation:**
    - I adapted the SQLite table structure and queries to accommodate ice cream data, as opposed to mountain data used in the lecture examples. This involved creating a new table specifically designed to store ice cream details (`flavor of ball 1, 2, 3`, and `size`), and other changes.
 
+
+   ```java
+      static final String COLUMN_NAME_FOBONE = "fobone";
+        static final String COLUMN_NAME_FOBTWO = "fobtwo";
+        static final String COLUMN_NAME_FOBTHREE = "fobthree";
+        static final String COLUMN_NAME_SIZE = "size";
+
+   ```
+   
    ```java
    // SQL to create an ice cream table instead of a mountain table
    static final String SQL_CREATE_ICECREAM_TABLE = 
@@ -52,7 +61,9 @@
        Icecream.COLUMN_NAME_SIZE + " INT)";
    ```
 
-
+   ```java
+      etc.. 
+   ```
 Bilder läggs i samma mapp som markdown-filen.
 
 ![](android1.png)
