@@ -19,7 +19,6 @@ class DatabaseTables {
         static final String COLUMN_NAME_FOBONE = "fobone";
         static final String COLUMN_NAME_FOBTWO = "fobtwo";
         static final String COLUMN_NAME_FOBTHREE = "fobthree";
-
         static final String COLUMN_NAME_SIZE = "size";
         public final long id;
         public final String fob1;
