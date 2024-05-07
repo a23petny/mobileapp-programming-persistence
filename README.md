@@ -2,15 +2,21 @@
 # Rapport
 
 1. **UI Design:**
-   In the initial setup, I configured the user interface to meet the project's specifications. I integrated a `TextView`, two `Button` views labeled 'Read' and 'Write', and four `EditText` views in the layout file. These were carefully placed to ensure both functionality and aesthetic appeal. The additional `EditText` captures the size of the ice cream cone, supplementing the original three intended for ice cream flavors.
+   - In the initial setup, I configured the user interface to meet the project's specifications. I integrated a `TextView`, two `Button` views labeled 'Read' and 'Write', and four `EditText` views in the layout file. These were carefully placed to ensure both functionality and aesthetic appeal. The additional `EditText` captures the size of the ice cream cone, supplementing the original three intended for ice cream flavors.
 
    ```xml
    <!-- Example of EditText for ice cream size in the layout XML -->
-   <EditText
-       android:id="@+id/size"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:hint="Enter size of the cone" />
+    <EditText
+        android:id="@+id/flavour_of_ball_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="flavour of ball 1"
+        app:layout_constraintBottom_toTopOf="@+id/flavour_of_ball_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
    ```
 
 2. **Button Functionality:**
