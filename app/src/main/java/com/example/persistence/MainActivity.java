@@ -83,6 +83,5 @@ public class MainActivity extends AppCompatActivity {
         databaseTables.addMountain(flavour_of_ball_1,flavour_of_ball_2,flavour_of_ball_3, size);
 
     }
-
 }
 
